@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>API列表数据</title>
   <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="shortcut icon" href="micon.ico"/>
 
   <style>
     li {
@@ -16,7 +17,7 @@
       padding: 0 32px 30px;
       margin-top: 50px;
       margin-right: 50px;
-      margin-left: 200px;
+      margin-left: 100px;
       background-color: #fff;
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
     }
@@ -42,7 +43,7 @@
     .record_num {
       font-size: 14px;
       color: #4d4d4d;
-      margin-top: 30px;
+      margin-top: 10px;
       float: right;
     }
 
@@ -83,10 +84,16 @@
     }
 
     .my_record_list_label {
-      margin-left: 10%;
       font-size: 16px;
+      width: auto;
+      margin-left: 60px;
       vertical-align: middle;
+      color: #4d4d4d;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       display: inline-block;
+      overflow: hidden;
     }
 
     .my_record_list_label span {
@@ -96,7 +103,7 @@
       display: inline-block;
     }
 
-    .cancel_record {
+    .delete_record {
       font-style: normal;
       color: #999;
       vertical-align: middle;
@@ -169,6 +176,12 @@
         let spanNode = document.createElement("span")
         spanNode.innerHTML = getShowTime(item.timestamp)
         labelNode.append(spanNode)
+        let delNode = document.createElement("a");
+        delNode.className = "delete_record"
+        delNode.href = "/mock/item/" + item.path
+        delNode.innerHTML = "删除"
+        labelNode.append(delNode)
+
 
         let aNode = document.createElement("a");
         aNode.className = "my_record_list_a"
